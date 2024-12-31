@@ -90,7 +90,7 @@ if [ "$WITH_SSL" == "" ]; then
       --dest-os=android \
       --without-snapshot \
       --without-ssl \
-      --with-intl=none \
+      --with-intl=full-icu \
       --enable-static \
       --cross-compiling
 else 
@@ -100,7 +100,7 @@ else
       --dest-os=android \
       --without-snapshot \
       --openssl-no-asm \
-      --with-intl=none \
+      --with-intl=full-icu \
       --enable-static \
       --cross-compiling
 fi
