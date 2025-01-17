@@ -15,7 +15,7 @@ jobs:
     name: Windows
     runs-on: windows-2019
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: npm install
       shell: bash
       run: npm install
@@ -34,11 +34,11 @@ jobs:
       shell: bash
       run: |
         mv puerts-node/nodejs puerts-node/nodejs_16
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin
         path: puerts-node/**/*
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin_win_x64
         path: ~/puerts-node/**/*
@@ -47,7 +47,7 @@ jobs:
     name: Windows-32
     runs-on: windows-2019
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: npm install
       shell: bash
       run: npm install
@@ -66,7 +66,7 @@ jobs:
       shell: bash
       run: |
         mv puerts-node/nodejs puerts-node/nodejs_16
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin
         path: puerts-node/**/*
@@ -75,7 +75,7 @@ jobs:
     name: macOS
     runs-on: macos-11
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: npm install
       shell: bash
       run: npm install
@@ -86,11 +86,11 @@ jobs:
     - name: Rename
       run: |
         mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin
         path: ~/puerts-node/**/*
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin_mac_x64
         path: ~/puerts-node/**/*
@@ -99,7 +99,7 @@ jobs:
     name: macOS with apple m1
     runs-on: macos-11
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: npm install
       shell: bash
       run: npm install
@@ -110,7 +110,7 @@ jobs:
     - name: Rename
       run: |
         mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin
         path: ~/puerts-node/**/*
@@ -122,7 +122,7 @@ jobs:
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '12'
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: npm install
       shell: bash
       run: npm install
@@ -133,7 +133,7 @@ jobs:
     - name: Rename
       run: |
         mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin
         path: ~/puerts-node/**/*
@@ -142,7 +142,7 @@ jobs:
     name: linux
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: npm install
       shell: bash
       run: npm install
@@ -154,7 +154,7 @@ jobs:
       run: |
         mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
         cp $GITHUB_WORKSPACE/puer-build.json ~/puerts-node/nodejs_16
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: nodejs_bin
         path: ~/puerts-node/**/*
@@ -162,7 +162,7 @@ jobs:
   build_android_arm64_shared:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: npm install
         shell: bash
         run: npm install
@@ -179,7 +179,7 @@ jobs:
       - name: Rename
         run: |
           mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: nodejs_bin
           path: ~/puerts-node/**/*
@@ -191,7 +191,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install gcc-multilib g++-multilib
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: npm install
         shell: bash
         run: npm install
@@ -208,7 +208,7 @@ jobs:
       - name: Rename
         run: |
           mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: nodejs_bin
           path: ~/puerts-node/**/*
@@ -216,7 +216,7 @@ jobs:
   build_android_arm64:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: npm install
         shell: bash
         run: npm install
@@ -233,7 +233,7 @@ jobs:
       - name: Rename
         run: |
           mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: nodejs_bin
           path: ~/puerts-node/**/*
@@ -245,7 +245,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install gcc-multilib g++-multilib
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: npm install
         shell: bash
         run: npm install
@@ -262,7 +262,7 @@ jobs:
       - name: Rename
         run: |
           mv ~/puerts-node/nodejs ~/puerts-node/nodejs_16
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: nodejs_bin
           path: ~/puerts-node/**/*
@@ -271,7 +271,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build_windows,build_windows_32,build_macos,build_macos_arm64,build_linux,build_ios,build_android_arm64,build_android_armv7,build_android_arm64_shared,build_android_armv7_shared]
     steps:
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
           name: nodejs_bin
           path: nodejs_bin/
@@ -282,7 +282,7 @@ jobs:
           
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -293,7 +293,7 @@ jobs:
           
       - name: Upload nodejs_bin
         #id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
