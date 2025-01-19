@@ -9,7 +9,7 @@ on:
 
 env:
   VERSION: 22.13.0
-  ANDROID_NDK_VERSION: r24
+  ANDROID_NDK_VERSION: r27
 
 jobs:
   build_android_arm64:
