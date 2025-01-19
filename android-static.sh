@@ -43,7 +43,7 @@ node $WORKSPACE/node-script/make_v8_inspector_export.js
 echo "=====[Building Node.js]====="
 
 cp $WORKSPACE/android-configure-static ./
-./android-configure-static ~/android-ndk-r21b $2 24 $WITH_SSL
+./android-configure-static ~/android-ndk-r27c $2 24 $WITH_SSL
 make -j8
 
 mkdir -p ../puerts-node/nodejs/lib/Android/$OUTPUT/
@@ -72,7 +72,7 @@ cp \
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
 
-if version_lt $VERSION "16"; then
+if version_lt $VERSION "22"; then
 cp out/Release/obj.target/tools/v8_gypfiles/libv8_libsampler.a \
   ../puerts-node/nodejs/lib/Android/$OUTPUT/
 fi
