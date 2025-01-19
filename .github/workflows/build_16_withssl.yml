@@ -9,6 +9,7 @@ on:
 
 env:
   VERSION: 22.13.0
+  ANDROID_NDK_VERSION: r24
 
 jobs:
   build_android_arm64:
@@ -18,12 +19,14 @@ jobs:
       - name: npm install
         shell: bash
         run: npm install
-      - name: Install NDK
-        run: |
-          cd ~
-          wget -O NDK -q https://dl.google.com/android/repository/android-ndk-r27c-linux-x86_64.zip
-          sudo apt install unzip -y
-          unzip -q NDK
+        
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: ${{ env.ANDROID_NDK_VERSION }}
+          add-to-path: false
+          
       - name: Build
         run: |
           cd $GITHUB_WORKSPACE
@@ -47,12 +50,12 @@ jobs:
       - name: npm install
         shell: bash
         run: npm install
-      - name: Install NDK
-        run: |
-          cd ~
-          wget -O NDK -q https://dl.google.com/android/repository/android-ndk-r27c-linux-x86_64.zip
-          sudo apt install unzip -y
-          unzip -q NDK
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: ${{ env.ANDROID_NDK_VERSION }}
+          add-to-path: false
       - name: Build
         run: |
           cd $GITHUB_WORKSPACE
